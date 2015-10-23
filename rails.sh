@@ -19,7 +19,6 @@ bundle exec rake db:migrate 2> /ukku/data/error.txt
 # run template
 rake rails:template LOCATION=/ukku/data/rails_template.rb 2> /ukku/data/error.txt
 bundle install --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
-bundle update spring
 
 # setup spec
 if [ -d "spec" ]; then
