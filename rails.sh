@@ -27,5 +27,12 @@ fi
 
 bundle exec rails generate rspec:install 2> /ukku/data/error.txt
 cp /ukku/data/makeitreal_spec.rb spec/
+echo "Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+" >> spec/rails_helper.rb
 
 bundle exec rspec spec --format j --fail-fast --out /ukku/data/result.json 2> /ukku/data/error.txt
