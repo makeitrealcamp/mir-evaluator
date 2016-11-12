@@ -27,6 +27,7 @@ RUN bash -l -c  'gem install --no-rdoc --no-ri execjs'
 RUN bash -l -c  'gem install --no-rdoc --no-ri phantomjs'
 RUN bash -l -c 'ruby -e "require %q{phantomjs}; Phantomjs.platform.ensure_installed!"'
 RUN bash -l -c 'apt-get -y install npm'
+RUN back -l -c 'apt-get -y install build-essential patch'
 RUN bash -l -c 'npm install -g http-server'
 RUN bash -l -c 'ln -s /usr/bin/nodejs /usr/bin/node'
 
