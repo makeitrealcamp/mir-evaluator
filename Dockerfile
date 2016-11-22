@@ -1,7 +1,9 @@
 FROM ubuntu-debootstrap:14.04
 
 RUN apt-get update
-RUN apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev postgresql-server-dev-9.3 imagemagick nodejs
+RUN apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev postgresql-server-dev-9.3 imagemagick
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+RUN apt-get -y install nodejs
 
 RUN git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 RUN echo 'export RBENV_ROOT=~/.rbenv' >> /etc/profile.d/rbenv.sh
@@ -26,12 +28,13 @@ RUN bash -l -c  'gem install --no-rdoc --no-ri capybara'
 RUN bash -l -c  'gem install --no-rdoc --no-ri execjs'
 RUN bash -l -c  'gem install --no-rdoc --no-ri phantomjs'
 RUN bash -l -c 'ruby -e "require %q{phantomjs}; Phantomjs.platform.ensure_installed!"'
-RUN bash -l -c 'apt-get -y install npm'
 RUN bash -l -c 'npm install -g http-server'
-RUN bash -l -c 'ln -s /usr/bin/nodejs /usr/bin/node'
 
 ADD ./rails.sh /root/
 RUN chmod 755 ~/rails.sh
 
 ADD ./sinatra.sh /root/
 RUN chmod 755 ~/sinatra.sh
+
+ADD ./react.sh /root/
+RUN chmod 755 ~/react.sh
