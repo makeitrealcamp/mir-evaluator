@@ -7,6 +7,8 @@ set -x
 git clone $1 /app
 
 cd /app
+npm config set cache /ukku/npm-cache
+npm set progress=false
 npm install
 npm install --save-dev enzyme react-addons-test-utils
 
