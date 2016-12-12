@@ -26,7 +26,7 @@ RUN bash -l -c  'gem install --no-rdoc --no-ri sinatra'
 RUN bash -l -c  'gem install --no-rdoc --no-ri rspec'
 RUN bash -l -c  'gem install --no-rdoc --no-ri capybara'
 RUN bash -l -c  'gem install --no-rdoc --no-ri execjs'
-RUN bash -l -c  'gem install --no-rdoc --no-ri phantomjs'
+RUN bash -l -c  'gem install --no-rdoc --no-ri phantomjs -v 2.1.1'
 RUN bash -l -c 'ruby -e "require %q{phantomjs}; Phantomjs.platform.ensure_installed!"'
 RUN bash -l -c 'npm install -g http-server'
 
