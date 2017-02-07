@@ -29,6 +29,9 @@ RUN bash -l -c  'gem install --no-rdoc --no-ri execjs'
 RUN bash -l -c  'gem install --no-rdoc --no-ri phantomjs -v 2.1.1'
 RUN bash -l -c 'ruby -e "require %q{phantomjs}; Phantomjs.platform.ensure_installed!"'
 RUN bash -l -c 'npm install -g http-server'
+RUN bash -l -c 'npm install -g mocha'
+RUN bash -l -c 'npm install -g sinon'
+RUN bash -l -c 'npm install -g chai'
 
 ADD ./rails.sh /root/
 RUN chmod 755 ~/rails.sh
