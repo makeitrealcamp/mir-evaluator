@@ -5,6 +5,9 @@ RUN apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libre
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get -y install nodejs
 
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+RUN echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> /etc/profile.d/yarn.sh
+
 RUN git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 RUN echo 'export RBENV_ROOT=~/.rbenv' >> /etc/profile.d/rbenv.sh
 RUN echo 'export RBENV_ROOT=~/.rbenv' >> ~/.bashrc
