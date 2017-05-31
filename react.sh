@@ -9,7 +9,7 @@ git clone $1 /app
 cd /app
 yarn config set cache-folder /ukku/yarn-cache
 yarn
-yarn add --save-dev enzyme react-addons-test-utils
+yarn add enzyme react-addons-test-utils --dev
 
 cp /ukku/data/MirRunner.test.js /app/src/
 
