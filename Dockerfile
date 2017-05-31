@@ -19,8 +19,8 @@ RUN echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 RUN git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 RUN git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 
-RUN bash -l -c 'rbenv install 2.3.0'
-RUN bash -l -c 'rbenv global 2.3.0'
+RUN bash -l -c 'rbenv install 2.3.1'
+RUN bash -l -c 'rbenv global 2.3.1'
 
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 RUN bash -l -c  'gem install --no-rdoc --no-ri bundler'
