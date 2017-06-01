@@ -17,12 +17,12 @@ if [ -f Gemfile.lock ]; then
   rm Gemfile.lock
 fi
 
-bundle install --jobs=1 --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
+bundle install --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
 RAILS_ENV=test bundle exec rails db:migrate 2> /ukku/data/error.txt
 
 # run template
 bundle exec rails app:template LOCATION=/ukku/data/rails_template.rb 2> /ukku/data/error.txt
-bundle install --jobs=1 --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
+bundle install --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
 
 # setup spec
 if [ -d "spec" ]; then
