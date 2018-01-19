@@ -7,6 +7,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get -y install unzip
 RUN apt-get -y install nodejs
 
+RUN apt-get install -y tzdata
+
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> /etc/profile.d/yarn.sh
 
