@@ -8,6 +8,8 @@ git clone $1 /app
 
 cd /app
 
+gem install --no-rdoc --no-ri bundler
+
 if [ ! -f Gemfile ]; then
   echo "No se encontró el archivo Gemfile en la raiz del proyecto." >> /ukku/data/error.txt
   exit 1
