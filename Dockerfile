@@ -50,6 +50,7 @@ RUN chmod 755 /root/react.sh
 
 RUN bash -l -c 'rbenv install 2.3.1'
 RUN bash -l -c 'rbenv install 2.3.2'
+RUN bash -l -c 'rbenv install 2.3.3'
 RUN bash -l -c 'rbenv install 2.4.0'
 RUN bash -l -c 'rbenv install 2.4.2'
 RUN bash -l -c 'rbenv install 2.4.3'
