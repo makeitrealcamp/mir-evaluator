@@ -7,7 +7,7 @@ set -x
 git clone $1 /app
 
 cd /app
-
+rbenv rehash
 gem install --no-rdoc --no-ri bundler
 
 if [ ! -f Gemfile ]; then
