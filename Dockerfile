@@ -8,12 +8,18 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get -y install nodejs unzip tzdata
 
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
-RUN echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> /etc/profile.d/yarn.sh
+RUN echo 'export PATH="$PATH:$HOME/.yarn/bin"' >> /etc/profile.d/yarn.sh
 
 RUN curl https://storage.googleapis.com/chromium-browser-snapshots/Linux_x64/526987/chrome-linux.zip --output /tmp/chromium-browser.zip && unzip /tmp/chromium-browser.zip -d /root
 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-RUN curl -sSL https://get.rvm.io | bash -s stable --ruby
+RUN bash -l -c 'curl -sSL https://get.rvm.io | bash'
+RUN usermod -a -G rvm root
+
+RUN echo '[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"' >> ~/.bashrc
+
+RUN bash -l -c 'rvm install 2.4.1'
+RUN bash -l -c 'rvm use 2.4.1 --default'
 
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 RUN bash -l -c  'gem install --no-rdoc --no-ri bundler'
