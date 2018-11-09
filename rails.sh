@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/bin/bash -l
 
 set -e
-set -x
 
 # clone app
 git clone $1 /app
