@@ -6,7 +6,7 @@ set -e
 git clone $1 /app
 
 cd /app
-gem install --no-rdoc --no-ri bundler
+gem install --no-document bundler
 
 if [ ! -f Gemfile ]; then
   echo "No se encontró el archivo Gemfile en la raiz del proyecto." >> /ukku/data/error.txt
@@ -17,12 +17,16 @@ if [ -f Gemfile.lock ]; then
   rm Gemfile.lock
 fi
 
-NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
+BUNDLE_SILENCE_ROOT_WARNING=true bundle config disable_platform_warnings true
+
+NOKOGIRI_USE_SYSTEM_LIBRARIES=true BUNDLE_SILENCE_ROOT_WARNING=true bundle install --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
+yarn install --check-files
+spring stop
 RAILS_ENV=test bundle exec rails db:migrate 2> /ukku/data/error.txt
 
 # run template
 bundle exec rails app:template LOCATION=/ukku/data/rails_template.rb 2> /ukku/data/error.txt
-NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
+NOKOGIRI_USE_SYSTEM_LIBRARIES=true BUNDLE_SILENCE_ROOT_WARNING=true bundle install --path=/ukku/bundler-cache -j4 --binstubs=vendor/bundle/bin 2> /ukku/data/error.txt
 
 # setup spec
 if [ -d "spec" ]; then
