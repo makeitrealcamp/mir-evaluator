@@ -17,8 +17,8 @@ RUN usermod -a -G rvm root
 
 RUN echo '[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"' >> ~/.bashrc
 
-RUN bash -l -c 'rvm install 2.5.1'
-RUN bash -l -c 'rvm use 2.5.1 --default'
+RUN bash -l -c 'rvm install 2.5.7'
+RUN bash -l -c 'rvm use 2.5.7 --default'
 
 RUN echo "gem: --no-document" > ~/.gemrc
 RUN bash -l -c  'gem install --no-document bundler -v 1.17.3'
@@ -44,16 +44,7 @@ RUN chmod 755 /root/sinatra.sh
 ADD ./react.sh /root/
 RUN chmod 755 /root/react.sh
 
-RUN bash -l -c 'rvm install 2.3.1'
-RUN bash -l -c 'rvm install 2.3.2'
-RUN bash -l -c 'rvm install 2.3.3'
-RUN bash -l -c 'rvm install 2.3.7'
-RUN bash -l -c 'rvm install 2.4.0'
-RUN bash -l -c 'rvm install 2.4.1'
-RUN bash -l -c 'rvm install 2.4.2'
-RUN bash -l -c 'rvm install 2.4.3'
-RUN bash -l -c 'rvm install 2.4.4'
-RUN bash -l -c 'rvm install 2.5.0'
+RUN bash -l -c 'rvm install 2.5.1'
 RUN bash -l -c 'rvm install 2.5.3'
 RUN bash -l -c 'rvm install 2.4.5'
 RUN bash -l -c 'rvm install 2.6.0'
