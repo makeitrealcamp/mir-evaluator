@@ -46,6 +46,7 @@ RUN chmod 755 /root/react.sh
 
 RUN bash -l -c 'rvm install 2.5.1'
 RUN bash -l -c 'rvm install 2.5.3'
+RUN bash -l -c 'rvm install 2.5.8'
 RUN bash -l -c 'rvm install 2.4.5'
 RUN bash -l -c 'rvm install 2.6.0'
 RUN bash -l -c 'rvm install 2.6.1'
